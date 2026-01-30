@@ -1,0 +1,375 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #333;
+    transition: background 0.5s;
+}
+
+/* =========================
+   LINKS
+========================= */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #4f46e5;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.navbar h3 {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+    width: 220px;
+    background: #1e293b;
+    color: #fff;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+}
+
+.sidebar a {
+    padding: 15px 25px;
+    margin: 5px 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.sidebar a:hover {
+    background: #4f46e5;
+}
+
+/* =========================
+   CONTENT
+========================= */
+.content {
+    margin-left: 220px;
+    padding: 100px 30px 30px 30px;
+    flex-grow: 1;
+    max-width: 1200px;
+}
+
+.content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   TABLES
+========================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+table thead {
+    background: #4f46e5;
+    color: white;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+table tr:nth-child(even) {
+    background: #f7f8fc;
+}
+
+table tr:hover {
+    background: #e0e4ff;
+}
+
+table a {
+    color: #4f46e5;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+/* Responsive table for mobile */
+@media (max-width: 500px) {
+    table, thead, tbody, th, td, tr { display: block; }
+    table thead { display: none; }
+    table tr {
+        margin-bottom: 15px;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        border-radius: 10px;
+        padding: 12px;
+    }
+    table td {
+        text-align: right;
+        padding: 8px;
+        position: relative;
+    }
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 12px;
+        width: 50%;
+        font-weight: 500;
+        text-align: left;
+    }
+}
+
+/* =========================
+   FORM
+========================= */
+form {
+    background: #fff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 550px;
+}
+
+form input {
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+form input:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 12px rgba(79,70,229,0.3);
+}
+
+form button {
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    background: #4f46e5;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+form button:hover {
+    background: #4338ca;
+}
+
+/* =========================
+   LOGIN / AUTH CARD
+========================= */
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    margin: auto;
+}
+
+.auth-card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.auth-card h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.auth-card input[type="text"],
+.auth-card input[type="password"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: all 0.3s;
+    font-size: 1rem;
+}
+
+.auth-card input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 10px rgba(102,126,234,0.3);
+}
+
+.login-btn {
+    background: #667eea;
+    color: #fff;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.login-btn:hover {
+    background: #5a67d8;
+}
+
+.register-text {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.register-text a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* =========================
+   ROLE TOGGLE SWITCH
+========================= */
+.role-toggle-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 28px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #667eea;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+#roleLabel {
+    font-weight: 600;
+    color: #333;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+body.admin-mode .auth-card {
+    background: #1f1f1f;
+    color: #fff;
+}
+
+body.admin-mode input {
+    background: #2c2c2c;
+    color: #fff;
+    border-color: #444;
+}
+
+body.admin-mode .login-btn {
+    background: #764ba2;
+}
+
+body.admin-mode .login-btn:hover {
+    background: #5e3b8b;
+}
+
+body.admin-mode #roleLabel {
+    color: #fff;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .sidebar { width: 180px; }
+    .content { margin-left: 180px; padding: 90px 20px 20px 20px; }
+    form { max-width: 100%; }
+}
+
+@media (max-width: 500px) {
+    body { flex-direction: column; }
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        padding-top: 0;
+    }
+    .sidebar a { flex-grow: 1; text-align: center; margin: 5px 2px; }
+    .content { margin-left: 0; padding: 80px 15px 15px 15px; }
+}

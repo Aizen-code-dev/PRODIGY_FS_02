@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <h3>EMS • Admin</h3>
+  <div>
+    <span th:text="${username}">Admin</span> |
+    <a th:href="@{/logout}">Logout</a>
+  </div>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <a th:href="@{/admin/dashboard}">Dashboard</a>
+  <a th:href="@{/admin/employees}">Manage Employees</a>
+  <a th:href="@{/admin/add-employee}">Add Employee</a>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+  <h2>Admin Dashboard</h2>
+  <p>Full system access enabled</p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Total Employees</h3>
+      <p>View, add, update, delete employees</p>
+    </div>
+    <div class="card">
+      <h3>Departments</h3>
+      <p>Manage department-wise data</p>
+    </div>
+    <div class="card">
+      <h3>Security</h3>
+      <p>Role-based access control</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

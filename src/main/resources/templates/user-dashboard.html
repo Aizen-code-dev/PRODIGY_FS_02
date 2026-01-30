@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Dashboard</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <h3>EMS • Employee</h3>
+  <div>
+    <span th:text="${username}">Employee</span> |
+    <a th:href="@{/logout}">Logout</a>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+  <h2>Welcome, <span th:text="${username}">Employee</span></h2>
+  <p>Here you can view all employee records (read-only).</p>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Department</th>
+      <th>Position</th>
+      <th>Salary</th>
+      <th>Profile Info</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employees}">
+      <td th:text="${employee.id}" data-label="ID"></td>
+      <td th:text="${employee.name}" data-label="Name"></td>
+      <td th:text="${employee.email}" data-label="Email"></td>
+      <td th:text="${employee.department}" data-label="Department"></td>
+      <td th:text="${employee.position}" data-label="Position"></td>
+      <td th:text="${employee.salary}" data-label="Salary"></td>
+      <td data-label="Profile Info">
+        <a th:href="@{'/user/profile/' + ${employee.id}}">View Profile</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Total Employees</h3>
+      <p th:text="${#lists.size(employees)} + ' employees in the system'"></p>
+    </div>
+    <div class="card">
+      <h3>Your Profile</h3>
+      <p>View and update your account details</p>
+    </div>
+    <div class="card">
+      <h3>Access Level</h3>
+      <p>Employee privileges enabled (read-only)</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

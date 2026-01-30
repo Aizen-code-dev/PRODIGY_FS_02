@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Employees</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="navbar">
+  <h3>Admin • Employees</h3>
+  <a th:href="@{/logout}" style="color:white;">Logout</a>
+</div>
+
+<div class="sidebar">
+  <a th:href="@{/admin/dashboard}">Dashboard</a>
+  <a th:href="@{/admin/employees}">Manage Employees</a>
+  <a th:href="@{/admin/employees/add}">Add Employee</a>
+</div>
+
+<div class="content">
+  <h2>Employees</h2>
+  <a th:href="@{/admin/employees/add}">Add New Employee</a>
+
+  <table border="1" style="width:100%; margin-top:20px;">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Department</th>
+      <th>Position</th>
+      <th>Salary</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employees}">
+      <td th:text="${employee.id}"></td>
+      <td th:text="${employee.name}"></td>
+      <td th:text="${employee.email}"></td>
+      <td th:text="${employee.department}"></td>
+      <td th:text="${employee.position}"></td>
+      <td th:text="${employee.salary}"></td>
+      <td>
+        <a th:href="@{/admin/employees/edit/{id}(id=${employee.id})}">Edit</a>
+        <a th:href="@{/admin/employees/delete/{id}(id=${employee.id})}"
+           onclick="return confirm('Are you sure?')">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Employee</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <h3>Admin • Add Employee</h3>
+  <a th:href="@{/logout}">Logout</a>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <a th:href="@{/admin/dashboard}">Dashboard</a>
+  <a th:href="@{/admin/employees}">Manage Employees</a>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+  <h2>Employees</h2>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Department</th>
+      <th>Position</th>
+      <th>Salary</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employees}">
+      <td th:text="${employee.id}" data-label="ID"></td>
+      <td th:text="${employee.name}" data-label="Name"></td>
+      <td th:text="${employee.email}" data-label="Email"></td>
+      <td th:text="${employee.department}" data-label="Department"></td>
+      <td th:text="${employee.position}" data-label="Position"></td>
+      <td th:text="${employee.salary}" data-label="Salary"></td>
+      <td data-label="Actions">
+        <a th:href="@{/admin/employees/edit/{id}(id=${employee.id})}">Edit</a>
+        <a th:href="@{/admin/employees/delete/{id}(id=${employee.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h2>Add New Employee</h2>
+  <form th:action="@{/admin/employees/add}" th:object="${employee}" method="post">
+    <input type="text" th:field="*{name}" placeholder="Name" required>
+    <input type="email" th:field="*{email}" placeholder="Email" required>
+    <input type="text" th:field="*{department}" placeholder="Department" required>
+    <input type="text" th:field="*{position}" placeholder="Position" required>
+    <input type="number" th:field="*{salary}" placeholder="Salary" required>
+
+    <button type="submit">Add Employee</button>
+  </form>
+</div>
+
+</body>
+</html>
